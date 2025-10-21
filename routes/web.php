@@ -11,6 +11,7 @@ Route::get('/posts/{id}', [PostController::class, 'show'])->name('post.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/posts/comment/{id}', [PostController::class, 'comment'])->name('comment');
 });
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

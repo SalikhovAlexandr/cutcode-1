@@ -22,8 +22,12 @@
 
         <div>
             <section class="rounded-b-lg mt-4">
-                <form>
-                    <textarea class="w-full shadow-inner p-4 border-0 mb-4 rounded-lg focus:shadow-outline text-2xl" placeholder="Ваш комментарий..." spellcheck="false"></textarea>
+                <form method="POST" action="{{route('comment', $post->id)}}">
+                    @csrf
+                    <textarea name="text" class="w-full shadow-inner p-4 border-0 mb-4 rounded-lg focus:shadow-outline text-2xl @error('text') border-red-800 @enderror" placeholder="Ваш комментарий..." spellcheck="false"></textarea>
+                    @error('text')
+                    <p class="text-red-500">{{$message}}</p>
+                    @enderror
                     <button type="submit" class="font-bold py-2 px-4 w-full bg-purple-400 text-lg text-white shadow-md rounded-lg ">Написать </button>
                 </form>
 
