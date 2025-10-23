@@ -26,7 +26,7 @@ class CommentForm extends FormRequest
             'user_id' => 'required|exists:users,id',
         ];
     }
-    protected function prepareForValidation() {
+    protected function prepareForValidation(): void {
         $this->merge([
             'user_id' => auth('web')->id(),
         ]);
